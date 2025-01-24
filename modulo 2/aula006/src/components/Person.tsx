@@ -15,7 +15,7 @@ export const Person = ({name, avatar, roles}: Props) => {
             <h1 className="font-bold capitalize">{name} - {getWeekDay()}</h1>
             <img className="w-44 h-44 rounded-md" src={avatar} alt="Foto homem" />
             <ul className="p-2 ml-4 list-disc">
-                {roles.map((role, index) => (
+                {roles.map((role, index: number) => (
                     <li key={index}>{role}</li>
                 ))}
             </ul>
