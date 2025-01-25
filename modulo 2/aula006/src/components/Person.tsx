@@ -8,7 +8,11 @@ type Props = {
     roles: string[]
 }
 
-export const Person = ({name, avatar, roles}: Props) => {
+export const Person = ({
+    name, 
+    avatar='https://media.istockphoto.com/id/1337144146/pt/vetorial/default-avatar-profile-icon-vector.jpg?s=2048x2048&w=is&k=20&c=-h5YhX1ml6ixJXjKAeX_rnh4II4Ox6tzGTm-SU6tiF4=', 
+    roles}: 
+    Props) => {
 
     return (
         <div>
