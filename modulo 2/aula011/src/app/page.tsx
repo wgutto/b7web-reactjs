@@ -1,6 +1,9 @@
 import { Cadastro } from "@/data/Cadastro"
 
 const Page = () => {
+
+  const devs = Cadastro.filter(person => person.profession === 'dev')
+
   return (
     <div>
 
@@ -11,6 +14,13 @@ const Page = () => {
           )}
         </ul>
       }
+      {devs.length > 0 && 
+        <ul>
+          {devs.map(person => 
+            <li key={person.id}>{person.name}</li>
+          )}
+        </ul> 
+        }
     </div>
   )
 }
