@@ -38,12 +38,11 @@ export const Table = ({students}: Props) => {
                                 }
                             </td>
 
-                            <td>{item.grade1}</td>
-                            <td>{item.grade2}</td>
+                            <td>{item.grade1.toFixed(1)}</td>
+                            <td>{item.grade2.toFixed(1)}</td>
 
                             <td className="font-bold">
                                 {item.active ? ((item.grade1 + item.grade2) / 2).toFixed(2) : '--'}
-
                             </td>
                         </tr>
                     ))}
