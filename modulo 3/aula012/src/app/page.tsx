@@ -6,8 +6,8 @@ import { useState } from "react"
 const Page = () => {
 
   const [list, setList] = useState<TodoItem[]>([
-    {label: 'Fazer algo', checked: false},
-    {label: 'Fazer outro algo', checked: true}
+    {id: 1, label: 'Fazer algo', checked: false},
+    {id:2, label: 'Fazer outro algo', checked: true}
   ])
   const [itemInput, setItemInput] = useState('')
 
@@ -17,7 +17,7 @@ const Page = () => {
     } else {
     setList([
         ...list,
-        {label: itemInput, checked: false}
+        {id: list.length + 1, label: itemInput, checked: false}
       ])
     }
 
@@ -26,10 +26,21 @@ const Page = () => {
 
   const deleteItem = (index: number) => {
     setList(
-      list.filter((item, key) => key !== index)
+      list.filter(item => item.id !== index)
     )
   }
 
+  const toggleItem = (id: number) => {
+    const newList = [...list]
+
+      for(let i in newList) {
+        if(newList[i].id === id) {
+          newList[i].checked = !newList[i].checked
+        }
+    }
+
+    setList(newList)
+  }
   return (
     <div className="w-screen h-screen flex flex-col items-center">
       <div className="flex flex-col gap-4 p-4">
@@ -50,9 +61,13 @@ const Page = () => {
         <p className="text-center font-semibold">{list.length} {list.length > 1 ? 'Itens' : 'Item'} na lista</p>
 
         {list.length > 0 &&
-          <ul className="list-disc pl-4">
-            {list.map((item, index) => 
-              <li key={index}>{item.label} - <button className="text-sm bg-red-600 px-1 rounded-sm hover:bg-red-700" onClick={() => deleteItem(index)}>Deletar</button></li>
+          <ul>
+            {list.map((item) =>
+              <li key={item.id} className="flex items-center gap-2 mb-1">
+                <input type="checkbox" onChange={() => toggleItem(item.id)} checked={item.checked} className="w-4 h-4" />
+
+                {item.label} - <button className="text-sm bg-red-600 px-1 rounded-sm hover:bg-red-700" onClick={() => deleteItem(item.id)}>Deletar</button>
+              </li>
             )}
           </ul>
         }
