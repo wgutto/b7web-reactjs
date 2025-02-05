@@ -9,6 +9,5 @@ export const photoList: photoType[] = [
     {id: 6, url: '6.jpg'},
     {id: 7, url: '7.jpg'},
     {id: 8, url: '8.jpg'},
-    {id: 9, url: '9.jpg'}
-
+    {id: 9, url: '9.jpg'},
 ]
