@@ -14,7 +14,12 @@ export const QuestaoItem = ({questao, contador, aoResponder}: Props) => {
     const checarQuestao = (index: number) => {
         if(respostaSelecionada === null) {
             setRespostaSelecionada(index)
-            aoResponder(index)
+
+
+            setTimeout(() => {
+                aoResponder(index)
+                setRespostaSelecionada(null)
+            }, 2000)
         }
     }
 

@@ -10,5 +10,15 @@ export const Questoes: questaoType[] = [
             'fortnite'
         ],
         resposta: 2
+    },
+    {
+        pergunta: 'Qual melhor Player de Valorant?',
+        opcoes: [
+            'nzr',
+            'aspas',
+            'zekken',
+            'tenz'
+        ],
+        resposta: 1
     }
 ]
