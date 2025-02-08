@@ -1,31 +1,32 @@
 "use client"
 
-import { QuestionItem } from "@/components/QuestionItem"
-import { questions } from "@/data/questions"
+import { QuestaoItem } from "@/components/QuestaoItem"
+import { Questoes } from "@/data/Questoes"
 import { useState } from "react"
 
 const Page = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const nameQuiz = 'Quiz'
+  const [perguntaAtual, setPerguntaAtual] = useState(0)
+  const nomeQuiz = 'Quiz de FPS'
 
-  const handleAnswer = () => {
+  const alternativaRespondida = (respostaSelecionada: number) => {
 
   }
 
   return (
-    <div className="w-screen h-screen bg-blue-600 flex justify-center items-center">
-      <div className="w-full bg-white max-w-2xl rounded-md shadow shadow-black">
-        <div className="text-gray-900 text-2xl border-b border-gray-300 font-bold p-4">{nameQuiz}</div>
+    <div className="w-screen h-screen flex justify-center items-center bg-blue-500">
+      <div className="bg-white w-full max-w-lg rounded-md shadow shadow-black">
+        <h1 className="text-3xl text-black font-bold py-4 px-2 border-b border-gray-300">{nomeQuiz}</h1>
 
-        <div>
-          <QuestionItem
-            question={questions[currentQuestion]}
-            count={currentQuestion + 1}
-            onAnswer={handleAnswer}
+        <div className="p-2">
+          <QuestaoItem
+            questao={Questoes[perguntaAtual]}
+            contador={perguntaAtual + 1}
+            aoResponder={alternativaRespondida}
+
           />
         </div>
 
-        <div className="text-sm text-center text-gray-900 border-t border-gray-300 font-bold p-4">{currentQuestion + 1} de {questions.length} {questions.length > 1 ? 'perguntas' : 'pergunta'}</div>
+        <div className="text-black text-sm font-bold text-center border-t border-gray-300 p-4">{perguntaAtual + 1} de {Questoes.length} {Questoes.length > 1 ? 'perguntas' : 'pergunta'}</div>
       </div>
     </div>
   )
