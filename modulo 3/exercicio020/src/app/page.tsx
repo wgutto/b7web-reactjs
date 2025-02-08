@@ -18,7 +18,11 @@ const Page = () => {
         <div className="text-gray-900 text-2xl border-b border-gray-300 font-bold p-4">{nameQuiz}</div>
 
         <div>
-          <QuestionItem question={questions[currentQuestion]} count={currentQuestion + 1} onAnswer={handleAnswer}  />
+          <QuestionItem
+            question={questions[currentQuestion]}
+            count={currentQuestion + 1}
+            onAnswer={handleAnswer}
+          />
         </div>
 
         <div className="text-sm text-center text-gray-900 border-t border-gray-300 font-bold p-4">{currentQuestion + 1} de {questions.length} {questions.length > 1 ? 'perguntas' : 'pergunta'}</div>
