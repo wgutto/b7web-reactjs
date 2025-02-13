@@ -1,10 +1,46 @@
 "use client"
 
+import { listReducers } from "@/reducers/listReducers"
 import { Item } from "@/types/Item"
-import { useState } from "react"
+import { useReducer, useState } from "react"
 
 const Page = () => {
-  const [list, setList] = useState<Item[]>([])
+  // const [list, setList] = useState<Item[]>([])
+
+  const [list, disPatch] = useReducer(listReducers, [])
+
+  const handleClickAdd = () => {
+    disPatch({
+      type: "add",
+      payload: {
+        text: 'Olá, mundo'
+      }
+    })
+
+    disPatch({
+      type:"edit",
+      payload: {
+        id: 2,
+        newText: 'Chupisco'
+      }
+    })
+
+    disPatch({
+      type: "remove",
+      payload: {
+        id: 2
+      }
+    })
+
+    disPatch({
+      type: "toggleDone",
+      payload: {
+        id: 3
+      }
+    })
+  }
+
+/*  
 
   const addNewList = (text: string) => {
     setList([...list, {
@@ -44,8 +80,15 @@ const Page = () => {
     )
   }
 
+*/  
+
   return (
     <div>
+      {list.map(item => {
+        <div key={item.id}>{item.text} - {item.done}</div>
+      })}
+
+      <button onClick={handleClickAdd}>Adicionar</button>
     </div>
   )
 }
