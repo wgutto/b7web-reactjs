@@ -83,12 +83,21 @@ const Page = () => {
 */  
 
   return (
-    <div>
-      {list.map(item => {
-        <div key={item.id}>{item.text} - {item.done}</div>
-      })}
+    <div className="h-screen w-screen bg-blue-500 flex flex-col justify-center items-center">
+      <div className="bg-white p-4 rounded-md">
+        <h1 className="text-black font-bold text-center text-2xl mb-4">Lista de Tarefas</h1>
+        <div>
+          <input type="text" className="bg-gray-800 p-3 rounded-md mr-4 outline-none focus:outline-yellow-500"/>
 
-      <button onClick={handleClickAdd}>Adicionar</button>
+          <button className="bg-gray-800 py-2 px-4 rounded-md font-bold">Adicionar</button>
+        </div>
+
+        <ul>
+          {list.map(item => {
+            <li key={item.id}>{item.text}</li>
+          })}
+        </ul>
+      </div>
     </div>
   )
 }
