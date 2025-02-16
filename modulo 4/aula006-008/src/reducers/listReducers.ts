@@ -54,10 +54,11 @@ export const listReducers = (list: Item[], action: ListAction) => {
         case "toggleDone":
             return list.map(item => {
                 if(item.id === action.payload.id) {
-                    item.done !== item.done
+                    return {...item, done: !item.done}
                 }
                 return item
             })
-            default: return list
+            default: 
+                return list
     }
 }
