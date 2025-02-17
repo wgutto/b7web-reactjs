@@ -28,17 +28,34 @@ const Page = () => {
   const handleDoneCheckBox = (id: number) => {
       disPatch({
         type: "toggleDone",
-        payload: {
-          id: id
-        }
+        payload: {id}
       })
   }
 
   const handleRemoveClick = (id: number) => {
+
+    if(!window.confirm('Realmente deseja excluir?')) return false
+
     disPatch({
       type: "remove",
       payload: {
         id: id
+      }
+    })
+  }
+
+  const handleEditClick = (id: number) => {
+    const item = list.find(item => item.id === id)
+    if(!item) return false
+
+    const newText = window.prompt('Editar Texto', item.text)
+    if(!newText || newText.trim() === '') return false
+
+    disPatch({
+      type: "edit",
+      payload: {
+        id: id,
+        newText: newText
       }
     })
   }
@@ -86,11 +103,11 @@ const Page = () => {
 */  
 
   return (
-    <div className="w-screen h-screen bg-blue-900">
+    <div className="w-screen h-screen bg-blue-900 p-4">
       <div className="mx-auto max-w-xl bg-gray-800 p-4 rounded-md">
         <h1 className="text-yellow-500 font-bold text-center text-2xl mb-4">Lista de Tarefas</h1>
         <div className="flex">
-          <input type="text" className="w-full p-3 rounded-md mr-4 border bg-gray-600 placeholder:text-white border-gray-600 outline-none" placeholder="Digite uma tarefa" value={task} onChange={(e) => {setTask(e.target.value)}}/>
+          <input type="text" className="w-full p-3 rounded-md mr-4 border bg-gray-600 placeholder:text-gray-400 border-gray-600 outline-none focus:border-yellow-600" placeholder="Digite uma tarefa" value={task} onChange={(e) => {setTask(e.target.value)}}/>
 
           <button className="rounded-md px-4 font-bold bg-yellow-500 hover:bg-yellow-600" onClick={handleClickAdd}>Adicionar</button>
         </div>
@@ -102,12 +119,13 @@ const Page = () => {
             className="flex py-3 border-b border-gray-700"
             >
             
-            <input type="checkbox" checked={item.done} onClick={() => handleDoneCheckBox(item.id)} />
+            <input type="checkbox" checked={item.done} onChange={() => handleDoneCheckBox(item.id)} />
 
             <p className="flex-1 pl-2 font-bold text-lg">{item.text}</p>
             
             <button className="capitalize pr-4 text-[12px] hover:underline" onClick={() => handleRemoveClick(item.id)}>remover</button>
-            <button className="capitalize pr-2 text-[12px] hover:underline" >editar</button>
+
+            <button className="capitalize pr-2 text-[12px] hover:underline" onClick={() => handleEditClick(item.id)} >editar</button>
             </li>
           ))}
         </ul>

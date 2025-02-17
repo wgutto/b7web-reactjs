@@ -41,9 +41,7 @@ export const listReducers = (list: Item[], action: ListAction) => {
                 done: false
             }]
         case "remove":
-            return list.filter(item => {
-                item.id !== action.payload.id
-            })
+            return list.filter(item => item.id !== action.payload.id)
         case "edit":
             return list.map(item => {
                 if(item.id === action.payload.id) {
