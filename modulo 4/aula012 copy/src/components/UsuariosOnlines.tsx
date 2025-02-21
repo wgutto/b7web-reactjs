@@ -1,5 +1,6 @@
-import { ContadorInicial } from "@/context/ContextoContagem"
+import { ContadorInicial } from "@/contexts/ContextoContagem"
 import { useContext } from "react"
+
 
 export const UsuariosOnlines = () => {
     const contador = useContext(ContadorInicial)

@@ -1,15 +1,15 @@
 "use client"
 
 import { Header } from "@/components/Header"
-import { ContadorInicial, ContextoContagem } from "@/context/ContextoContagem"
+import { ContextoContagem, ContadorInicial  } from "@/contexts/ContextoContagem"
 
 const Page = () => {
 
   return(
     <div className="container mx-auto">
-      <ContextoContagem value={ContadorInicial}>
+      <ContextoContagem.Provider value={150}>
         <Header/>
-      </ContextoContagem>    
+      </ContextoContagem.Provider>    
     </div>
   )  
 }
