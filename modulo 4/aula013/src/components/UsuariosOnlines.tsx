@@ -1,13 +1,22 @@
-import { ContadorInicial } from "@/contexts/ContextoContagem"
+import { ContextoContagem } from "@/contexts/ContextoContagem"
 import { useContext } from "react"
 
 
 export const UsuariosOnlines = () => {
-    const contador = useContext(ContadorInicial)
+    const contadorCtx = useContext(ContextoContagem)
+
+    const banirTodos = () => {
+        contadorCtx?.setContadorOnline(0)
+    }
 
     return (
-        <p>
-            Onlines: {contador}
-        </p>
+        <div>
+            <p>
+                Onlines: {contadorCtx?.contadorOnlines}
+                
+            </p>
+
+            <button onClick={banirTodos}>Banir todos</button>
+        </div>
     )
 }
