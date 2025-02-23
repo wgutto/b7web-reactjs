@@ -13,8 +13,8 @@ export const LoggedUserProvider = ({children}: Props) => {
     const [name, setName] = useState('Paulo')
 
     return (
-        <LoggedUsersContext value={{name, setName}}>
+        <LoggedUsersContext.Provider value={{name, setName}}>
             {children}
-        </LoggedUsersContext>
+        </LoggedUsersContext.Provider>
     )
 }
