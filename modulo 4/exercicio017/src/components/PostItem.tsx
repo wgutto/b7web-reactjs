@@ -1,5 +1,5 @@
 import { PostContext } from "@/contexts/PostContext"
-import { useContext } from "react"
+
 
 export const PostItem = () => {
     const postCtx = useContext(PostContext)
