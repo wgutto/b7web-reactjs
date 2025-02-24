@@ -1,14 +1,15 @@
 import { PostContext } from "@/contexts/PostContext"
+import { useContext } from "react"
 
 
 export const PostItem = () => {
-    const postCtx = (PostContext)
+    const postCtx = useContext(PostContext)
 
     const handleRemovePost = (id: number) => {
         postCtx?.removePost(id)
     }
     return (
-        <div className="w-full p-2">
+        <div className="w-full p-2 p">
 
 
             {postCtx?.posts.map(item => (
