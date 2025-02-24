@@ -2,7 +2,7 @@ import { PostContext } from "@/contexts/PostContext"
 
 
 export const PostItem = () => {
-    const postCtx = useContext(PostContext)
+    const postCtx = (PostContext)
 
     const handleRemovePost = (id: number) => {
         postCtx?.removePost(id)
