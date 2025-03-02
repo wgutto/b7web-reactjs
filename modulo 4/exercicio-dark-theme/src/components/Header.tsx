@@ -5,7 +5,7 @@ export const Header = () => {
     const themeCtx = useContext(ThemeContext)
     return (
             <div>
-                <h1 className="text-3xl text-black">Titulo da página</h1>
+                <h1 className="text-3xl text-black font-bold">Titulo da página</h1>
             </div>
     )
 }
