@@ -1,17 +1,16 @@
-import { ReactNode, useContext } from "react"
-import { ThemeContext } from "../contexts/ThemeContext"
+import { ReactNode } from "react"
 
 type Props = {
     children: ReactNode
 }
 export const Container = ({children}: Props) => {
-    const themeCtx = useContext(ThemeContext)
     return (
-        <div className={`w-screen h-screen 
+        <div className="w-screen h-screen 
         
-            ${themeCtx?.theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'}
+        bg-black text-white
+        dark:bg-white dark:text-black
         
-        `}>
+        ">
         <div className="container mx-auto">
                 {children}
         </div>

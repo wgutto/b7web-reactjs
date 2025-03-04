@@ -19,10 +19,15 @@ type Props = {
 export const ThemeContextProvider = ({children}: Props) => {
     const [isMounted, setIsMounted] = useState(false)
     const [theme, setTheme] = useState(
-       typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) || 'light' : 'light'
+        typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) || 'dark' : 'dark'
     )
 
     useEffect(() => {
+        if(theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
         setIsMounted(true)
         localStorage.setItem(STORAGE_KEY, theme)
     }, [theme])
