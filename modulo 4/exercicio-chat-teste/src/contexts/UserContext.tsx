@@ -1,16 +1,17 @@
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useState } from "react";
 type UserContextType = {
     user: string
     setUser: (newUser: string) => void
 }
-const UserContext = createContext<UserContextType | null>(null)
+export const UserContext = createContext<UserContextType | null>(null)
 
 type Props = {
     children: ReactNode
 }
 export const UserContextProvider = ({children}: Props) => {
+    const [user, setUser] = useState('')
     return (
-        <UserContext.Provider>
+        <UserContext.Provider value={{user, setUser}}>
             {children}
         </UserContext.Provider>
     )
