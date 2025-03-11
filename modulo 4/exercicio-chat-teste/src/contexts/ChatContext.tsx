@@ -5,8 +5,9 @@ import { chatReducer } from "../reducers/chatReducer";
 type ChatContextType = {
     chat: chatType[]
     addMessage: (user: string, message: string) => void
+    removeMessage: (id: number) => void
 }
-const ChatContext = createContext<ChatContextType | null>(null)
+export const ChatContext = createContext<ChatContextType | null>(null)
 
 type Props = {
     children: ReactNode
@@ -23,8 +24,17 @@ export const ChatContextProvider = ({children}: Props) => {
             }
         })
     }
+
+    const removeMessage = (id: number) => {
+        dispatch({
+            type: 'remove',
+            payload: {
+                id: id
+            }
+        })
+    }
     return (
-        <ChatContext.Provider value={{chat, addMessage}}>
+        <ChatContext.Provider value={{chat, addMessage, removeMessage}}>
             {children}
         </ChatContext.Provider>
     )

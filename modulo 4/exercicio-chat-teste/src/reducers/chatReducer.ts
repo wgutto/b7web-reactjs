@@ -22,7 +22,7 @@ export const chatReducer = (messages: chatType[], actions: chatAction) => {
             return [...messages, {
                 id: messages.length,
                 user: actions.payload.user,
-                messages: actions.payload.message
+                message: actions.payload.message
             }]
         case 'remove':
             return messages.filter(item => item.id !== actions.payload.id)

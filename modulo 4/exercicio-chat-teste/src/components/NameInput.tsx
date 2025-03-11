@@ -4,12 +4,12 @@ import { UserContext } from "../contexts/UserContext"
 export const NameInput = () => {
     const [nameInput, setNameInput] = useState('')
     const [showError, setShowError] = useState(false)
-    const chatCtx = useContext(UserContext)
+    const userCtx = useContext(UserContext)
 
     const handleKeyUpAction = (event: KeyboardEvent<HTMLInputElement>) => {
         if(event.code.toLowerCase() === 'enter') {
             if(nameInput.trim() !== '') {
-                chatCtx?.setUser(nameInput.trim())
+                userCtx?.setUser(nameInput.trim())
             } else {
                 setShowError(true)
             }
