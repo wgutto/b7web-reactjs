@@ -13,8 +13,15 @@ type removeAction = {
         id: number
     }
 }
+type editAction = {
+    type: 'edit',
+    payload: {
+        id: number,
+        newMessage: string
+    }
+}
 
-type chatAction = addAction | removeAction
+type chatAction = addAction | removeAction | editAction
 
 export const chatReducer = (messages: chatType[], actions: chatAction) => {
     switch(actions.type) {
@@ -26,6 +33,13 @@ export const chatReducer = (messages: chatType[], actions: chatAction) => {
             }]
         case 'remove':
             return messages.filter(item => item.id !== actions.payload.id)
+        case 'edit':
+            return messages.map(item => {
+                if(item.id === actions.payload.id) {
+                    item.message = actions.payload.newMessage
+                }
+                return item
+            })    
         default:
             return messages        
     }

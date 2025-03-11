@@ -6,6 +6,7 @@ type ChatContextType = {
     chat: chatType[]
     addMessage: (user: string, message: string) => void
     removeMessage: (id: number) => void
+    editMessage: (id: number) => void
 }
 export const ChatContext = createContext<ChatContextType | null>(null)
 
@@ -33,8 +34,24 @@ export const ChatContextProvider = ({children}: Props) => {
             }
         })
     }
+    const editMessage = (id: number) => {
+        const item = chat.find(item => item.id === id)
+        if(!item) return false
+
+        const newMessage = window.prompt('Editar mensagem', item.message)
+
+        if(!newMessage || newMessage.trim() === '') return false
+
+        dispatch({
+            type: "edit",
+            payload: {
+                id: id,
+                newMessage: newMessage
+            }
+        })
+    }
     return (
-        <ChatContext.Provider value={{chat, addMessage, removeMessage}}>
+        <ChatContext.Provider value={{chat, addMessage, removeMessage, editMessage}}>
             {children}
         </ChatContext.Provider>
     )

@@ -13,7 +13,7 @@ export const Chat = () => {
 
     return (
         <div className="border border-white/30 rounded-md my-4">
-            <div className="h-96 p-4 overflow-y-scroll">
+            <div className="h-96 p-4 overflow-y-auto">
 
                 <ChatField/>
 
