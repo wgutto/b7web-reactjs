@@ -19,7 +19,7 @@ type Props = {
 export const ThemeContextProvider = ({children}: Props) => {
     const [isMounted, setIsMounted] = useState(false)
     const [theme, setTheme] = useState(
-       typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) || 'light' : 'light'
+        typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) || 'light' : 'light'
     )
 
     useEffect(() => {
