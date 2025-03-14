@@ -34,6 +34,7 @@ export const ChatContextProvider = ({children}: Props) => {
             }
         })
     }
+
     const editMessage = (id: number) => {
         const item = chat.find(item => item.id === id)
         if(!item) return false
@@ -50,6 +51,7 @@ export const ChatContextProvider = ({children}: Props) => {
             }
         })
     }
+
     return (
         <ChatContext.Provider value={{chat, addMessage, removeMessage, editMessage}}>
             {children}
