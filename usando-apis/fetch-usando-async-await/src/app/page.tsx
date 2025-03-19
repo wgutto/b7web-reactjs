@@ -25,10 +25,29 @@ const Page = () => {
     getUsers()
   }, [])
 
+  const handleAddButtom = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: 'Titulo de teste',
+        body: 'Corpo de teste',
+        userId: 99
+      })
+    }) 
+    
+    const json = await response.json()
+
+    console.log(json)
+  }
+
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl">Bem vindo a floresta</h1>
       <User user={users} loading={loading}/>
+      <button onClick={handleAddButtom}>Adicionar novo Post</button>
     </div>
   )
 }
